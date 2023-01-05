@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место Россия</title>
+</head>
+
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/Vector.png" alt="логотип">
+    <img class="header__line" src="./images/Line.png" alt="линия">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/JakIvKusto.jpg" alt="Жак-Ив Кусто">
+      <div class="profile__info">
+        <p class="profile__name">Жак-Ив Кусто</p>
+        <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
+        <p class="profile__profession">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button" type="button" aria-label="Добавлять"></button>
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img class="element__picture" src="./images/Kara4aevsk.jpg" alt="Карачаевск">
+        <div class="element__content">
+          <h2 class="element__title">Карачаевск</h2>
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__picture" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        <div class="element__content">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__picture" src="./images/Dombai.jpg" alt="Домбай">
+        <div class="element__content">
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__picture" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        <div class="element__content">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__picture" src="./images/Dombai.jpg" alt="Домбай">
+        <div class="element__content">
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__picture" src="./images/Kara4aevsk.jpg" alt="Карачаево-Черкесск">
+        <div class="element__content">
+          <h2 class="element__title">Карачаево-Черкесск</h2>
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__conteiner">
+      <button class="popup__close" type="button" aria-label="Закрыть"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="form__profile">
+        <input class="popup__input popup__form-name" type="text" name="form__name" placeholder="Имя">
+        <input class="popup__input popup__form-profession" type="text" name="form__profession" placeholder="Профессия">
+        <button class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
+</body>
+
+</html>
