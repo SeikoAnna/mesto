@@ -10,14 +10,13 @@
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/Vector.png" alt="логотип">
-    <img class="header__line" src="./images/Line.png" alt="линия">
+    <img class="header__logo" src="./images/Vector.svg" alt="логотип">
   </header>
   <main class="content">
     <section class="profile">
       <img class="profile__avatar" src="./images/JakIvKusto.jpg" alt="Жак-Ив Кусто">
       <div class="profile__info">
-        <p class="profile__name">Жак-Ив Кусто</p>
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
         <p class="profile__profession">Исследователь океана</p>
       </div>
@@ -75,9 +74,9 @@
     <div class="popup__conteiner">
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="form__profile">
-        <input class="popup__input popup__form-name" type="text" name="form__name" placeholder="Имя">
-        <input class="popup__input popup__form-profession" type="text" name="form__profession" placeholder="Профессия">
+      <form class="popup__form" name="form-profile">
+        <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
+        <input class="popup__input popup__input_type_profession" type="text" name="profession" placeholder="Профессия">
         <button class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
