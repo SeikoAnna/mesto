@@ -24,42 +24,60 @@
     </section>
     <section class="elements">
       <div class="element">
-        <img class="element__picture" src="./images/Kara4aevsk.jpg" alt="Карачаевск">
+        <button class="element__picture-botton" type="button" aria-label="Увеличение картинки">
+          <img class="element__picture" src="./images/Kara4aevsk.jpg" alt="Карачаевск">
+        </button>
+        <button class="element__delete" type="button" aria-label="Удаление картинки"></button>
         <div class="element__content">
           <h2 class="element__title">Карачаевск</h2>
           <button class="element__like" type="button" aria-label="Лайк"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__picture" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        <button class="element__picture-botton" type="button" aria-label="Увеличение картинки">
+          <img class="element__picture" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        </button>
+        <button class="element__delete" type="button" aria-label="Удаление картинки"></button>
         <div class="element__content">
           <h2 class="element__title">Гора Эльбрус</h2>
           <button class="element__like" type="button" aria-label="Лайк"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__picture" src="./images/Dombai.jpg" alt="Домбай">
+        <button class="element__picture-botton" type="button" aria-label="Увеличение картинки">
+          <img class="element__picture" src="./images/Dombai.jpg" alt="Домбай">
+        </button>
+        <button class="element__delete" type="button" aria-label="Удаление картинки"></button>
         <div class="element__content">
           <h2 class="element__title">Домбай</h2>
           <button class="element__like" type="button" aria-label="Лайк"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__picture" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        <button class="element__picture-botton" type="button" aria-label="Увеличение картинки">
+          <img class="element__picture" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        </button>
+        <button class="element__delete" type="button" aria-label="Удаление картинки"></button>
         <div class="element__content">
           <h2 class="element__title">Гора Эльбрус</h2>
           <button class="element__like" type="button" aria-label="Лайк"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__picture" src="./images/Dombai.jpg" alt="Домбай">
+        <button class="element__picture-botton" type="button" aria-label="Увеличение картинки">
+          <img class="element__picture" src="./images/Dombai.jpg" alt="Домбай">
+        </button>
+        <button class="element__delete" type="button" aria-label="Удаление картинки"></button>
         <div class="element__content">
           <h2 class="element__title">Домбай</h2>
           <button class="element__like" type="button" aria-label="Лайк"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__picture" src="./images/Kara4aevsk.jpg" alt="Карачаево-Черкесск">
+        <button class="element__picture-botton" type="button" aria-label="Увеличение картинки">
+          <img class="element__picture" src="./images/Kara4aevsk.jpg" alt="Карачаево-Черкесск">
+        </button>
+        <button class="element__delete" type="button" aria-label="Удаление картинки"></button>
         <div class="element__content">
           <h2 class="element__title">Карачаево-Черкесск</h2>
           <button class="element__like" type="button" aria-label="Лайк"></button>
@@ -70,14 +88,27 @@
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup_type_edit">
     <div class="popup__conteiner">
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="form-profile">
+      <form class="popup__form popup__form_edit" name="form-profile">
         <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
         <input class="popup__input popup__input_type_profession" type="text" name="profession" placeholder="Профессия">
         <button class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="popup popup_type_add">
+    <div class="popup__conteiner">
+      <button class="popup__close" type="button" aria-label="Закрыть"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__form_add" name="form-card">
+        <input class="popup__input popup__input_type_title" type="text" name="title" placeholder="Название">
+        <input class="popup__input popup__input_type_picture" type="url" name="url" placeholder="Ссылка на картинку">
+        <button class="popup__save" type="submit" aria-label="Создать">Создать</button>
       </form>
     </div>
   </div>
