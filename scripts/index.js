@@ -19,6 +19,7 @@ const popupFormEdit = document.querySelector('.popup__form_edit');
 const popupFormAdd = document.querySelector('.popup__form_add');
 const popupImage = document.querySelector('.popup_photo'); //попап увеличенного фото
 const cardList = document.querySelector('.elements');
+const popupCloseButtons = document.querySelectorAll('.popup__close');
 
 // Функция открытия попапов
 function openPopup(item) {
@@ -31,12 +32,6 @@ function closePopup(item) {
   item.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupByEscClick);
 };
-
-const popupCloseButtons = document.querySelectorAll('.popup__close');
-popupCloseButtons.forEach((element) => {
-  const popup = element.closest('.popup');
-  element.addEventListener('click', () => closePopup(popup));
-});
 
 // Открытие попапа редактирования профиля
 editButton.addEventListener('click', function () {
@@ -72,8 +67,6 @@ function submitFormPopupAdd(event) {
   };
   cardList.prepend(createCard(newCard));
   closePopup(addPopup);
-  event.submitter.disabled = true;
-  event.submitter.classList.add('popup__submit-popup-btn_disabled');
 };
 
 const initialCards = [
