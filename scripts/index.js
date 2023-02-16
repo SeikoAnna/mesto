@@ -168,5 +168,12 @@ popupCloseButtons.forEach(button => {
   button.addEventListener('click', () => closePopup(popup));
 })
 
-new FormValidator()
+const formAddCard = document.querySelectorAll('.popup__form');
+const formProfile = document.querySelectorAll('.popup__form');
+
+const ValidstorAddCard = new FormValidator (config, formAddCard);
+ValidstorAddCard.enableValidation();
+
+const ValidstorProfile = new FormValidator (config, formProfile); 
+ValidstorProfile.enableValidation();
 

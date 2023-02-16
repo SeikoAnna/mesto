@@ -7,15 +7,6 @@ const config = ({
   errorClass: 'popup__input-error_active'
 });
 
-// const formAddCard = document.querySelectorAll('.popup__form');
-// const formProfile = document.querySelectorAll('.popup__form');
-
-// const ValidstorAddCard = new FormValidator (config, formAddCard);
-// const ValidstorProfile = new FormValidator (config, formProfile); 
-
-// ValidstorAddCard.enableValidation();
-// ValidstorProfile.enableValidation();
-
 export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
@@ -62,21 +53,21 @@ export default class FormValidator {
     }
   };
  
-  _setEventListeners = () => {
+  setEventListeners = () => {
     const inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     const buttonElement = formElement.querySelector(this._config.submitButtonSelector);
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._isValid(inputElement,);
-        this._toggleButtonState();
+        this.isValid(inputElement,);
+        this.toggleButtonState();
       });
     });
     formElement.addEventListener('reset', () => {
       setTimeout(() => {
-        this._toggleButtonState();
+        this.toggleButtonState();
       }, 0);
-    });
+     });
   };
 
   enableValidation = () => {
@@ -86,13 +77,11 @@ export default class FormValidator {
         e.preventDefault();
         formElement.reset();
       });
-      setEventListeners();
+      // setEventListeners();
 
     });
   };
 
-  enableValidation() {
-    this._setEventListeners();
-  }
+
   
 }
