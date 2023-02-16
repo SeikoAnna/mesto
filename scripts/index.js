@@ -1,4 +1,5 @@
-//объявляем переменные
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
 
 const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
@@ -20,6 +21,15 @@ const popupFormAdd = document.querySelector('.popup__form_add');
 const popupImage = document.querySelector('.popup_photo'); //попап увеличенного фото
 const cardList = document.querySelector('.elements');
 const popupCloseButtons = document.querySelectorAll('.popup__close');
+
+const config = ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-popup-btn',
+  inactiveButtonClass: 'popup__submit-popup-btn_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+});
 
 // Функция открытия попапов
 function openPopup(item) {
@@ -98,7 +108,7 @@ const initialCards = [
 
 // Добавление фотографий из готового массива
 const elementCardTemplate = document.querySelector('#element__card').content;
-
+// const photoElement = elementCardTemplate.querySelector('.element').cloneNode(true);
 function createCard(item) {
   const photoElement = elementCardTemplate.querySelector('.element').cloneNode(true);
   photoElement.querySelector('.element__picture').src = item.link;
@@ -157,3 +167,6 @@ popupCloseButtons.forEach(button => {
   popup.addEventListener('mousedown', closePopupByOverlayClick);
   button.addEventListener('click', () => closePopup(popup));
 })
+
+new FormValidator()
+
