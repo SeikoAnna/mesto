@@ -1,5 +1,5 @@
 import FormValidator from './FormValidator.js';
-import Card from './Card.js';
+// import Card from './Card.js';
 
 const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
@@ -168,12 +168,7 @@ popupCloseButtons.forEach(button => {
   button.addEventListener('click', () => closePopup(popup));
 })
 
-const formAddCard = document.querySelectorAll('.popup__form');
-const formProfile = document.querySelectorAll('.popup__form');
-
-const ValidstorAddCard = new FormValidator (config, formAddCard);
+const ValidstorAddCard = new FormValidator (config, popupForm);
 ValidstorAddCard.enableValidation();
 
-const ValidstorProfile = new FormValidator (config, formProfile); 
-ValidstorProfile.enableValidation();
 
