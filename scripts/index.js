@@ -74,7 +74,7 @@ function submitFormPopupAdd(event) {
   renderCard({name: popupTitle.value,
     link: popupPicture.value
   });
-  // cardList.prepend(createCards(newCard));
+
   closePopup(addPopup);
   event.submitter.disabled = true;
   event.submitter.classList.add('popup__submit-popup-btn_disabled');
@@ -137,7 +137,7 @@ validationOfPopupAdd.enableValidation();
 // Открытие попапа увеличения фото
 function createCards(data) {
   
-  const imageElem = document.querySelector('.element__picture-botton');
+  const imageElem = document.querySelector('.element__picture');
   const titleElem = document.querySelector('.element__title');
   const imgPopup = document.querySelector('.popup__image'); //увеличенное фото
   const titlePopup = document.querySelector('.popup__photo-title'); //подпись под увеличенным фото

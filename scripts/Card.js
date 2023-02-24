@@ -30,7 +30,7 @@ export default class Card {
 
     deleteCardBtn.addEventListener('click', this._handleDeleteCard);
     likeCardBtn.addEventListener('click', this._handleLikeCard);
-    this._cardLink.addEventListener('click', () => this._handleCardClick(this._data.name, this._data.link));
+    this._cardLink.addEventListener('click', () => this._handleCardClick(this._data));
   }
 
   createCard() {
