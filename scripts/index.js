@@ -59,6 +59,7 @@ addButton.addEventListener('click', function () {
   popupTitle.value = '';
   popupPicture.value = '';
   openPopup(addPopup);
+  validationOfPopupAdd.toggleButtonState(); 
 });
 
 // сохраниение данных из попапа редактирования профиля на страницу
@@ -81,8 +82,6 @@ function submitFormPopupAdd(event) {
   const cardElement = renderCard(popupNewCard);
   cardList.prepend(cardElement);
   closePopup(addPopup);
-  //   event.submitter.disabled = true;
-  //   event.submitter.classList.add('popup__submit-popup-btn_disabled');
 };
 
 const initialCards = [
@@ -138,7 +137,6 @@ validationOfPopupEdit.enableValidation();
 
 const validationOfPopupAdd = new FormValidator(config, addPopup);
 validationOfPopupAdd.enableValidation();
-validationOfPopupAdd.toggleButtonState(); 
 
 // Открытие попапа увеличения фото
 function createCards(data) {
@@ -157,3 +155,4 @@ function renderCard(data) {
 initialCards.forEach((data) => {
   cardList.prepend(renderCard(data));
 })
+
