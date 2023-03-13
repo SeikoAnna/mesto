@@ -39,84 +39,6 @@ const cardList = '.elements';
 const popupImageSelector = '#popup_photo';
 const cardTemplateSelector = '#element__card';
 
-const popupWithBigImage = new PopupWithImage (popupImageSelector);
-popupWithBigImage.setEventListeners();
-
-const handleCardClick = (name, link) => {
-  popupWithBigImage.open(name, link);
-}
-const userInfo = new UserInfo ({
-    userNameSelector: '.profile__name',
-    userInfoSelector: '.profile__profession'
-});
-// Открытие попапа редактирования профиля
-const handleEditProfileFormSubmit = (evt, formValues) => {
-  evt.preventDefault();
-  userInfo.setUserInfo(formValues.name, formValues.info);
-}
-
-const popupEditProfileForm = new PopupWithForm ('#popup_type_edit', handleEditProfileFormSubmit)
-popupEditProfileForm.setEventListeners();
-
-const handleCardAddFormSubmit = (evt, item) => {
-  evt.preventDefault();
-  const card = createNewCard(item);
-  cardElementList.addItem(card);
-}
-
-const popupAddCardForm = new PopupWithForm('#popup_type_add', handleCardAddFormSubmit)
-popupAddCardForm.setEventListeners();
-
-  //Слушатели
-editButton.addEventListener('click', () => {
-  const {name, info} = userInfo.getUserInfo();
-
-  popupName.value = name;
-  popupProfession.value = info;
-  popupEditProfileForm.open();
-})
-
-popupCloseButtons.addEventListener('click', function () {
-  popupEditProfileForm.close();
-})
-
-addPopup.addEventListener('click', function () {
-    popupSave.setAttribute('disabled', true)
-    validationOfPopupAdd.resetValidation();
-  popupAddCardForm.open();
-})
-
-popupCloseButtons.addEventListener('click', function () {
-  popupAddCardForm.close();
-})
-
-//валидация
-const validationOfPopupEdit = new FormValidator(config, editPopup);
-validationOfPopupEdit.enableValidation();
-
-const validationOfPopupAdd = new FormValidator(config, addPopup);
-validationOfPopupAdd.enableValidation();
-
-
-const createNewCard = (item) => {
-  const newCard = new Card(item, cardTemplateSelector, handleCardClick)
-  const cardElement = newCard.createCard()
-  console.log(cardElement)
-
-  return cardElement
-}
-
-
-const cardElementList = new Section({
-  items: initialCards, //вот мы закинули аргументом наш массив 
-  renderer: (item) => { 
-    const card = createNewCard (item);// а вот наша функция, которая отвечает за создание и отрисовку данных на странице
-     cardElementList.addItem(card); // тут мы создали и добавили нашу карточку
-  },
-}, cardList) // передали контейнер, куда хотим добавить карточки
-
-cardElementList.renderItems(); //вызвали второй публичный метод,  который добавит нам карточки в контейнер
-
 const config = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -152,3 +74,76 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+//открытие попапа профиля
+const userInfo = new UserInfo ({
+    userNameSelector: '.profile__name',
+    userInfoSelector: '.profile__profession'
+});
+const handleEditProfileFormSubmit = (evt, formValues) => {
+  evt.preventDefault();
+  userInfo.setUserInfo(formValues.name, formValues.info);
+  popupEditProfileForm.close();
+}
+
+const popupEditProfileForm = new PopupWithForm ('#popup_type_edit', handleEditProfileFormSubmit)
+popupEditProfileForm.setEventListeners();
+
+editButton.addEventListener('click', () => {
+const {name, info} = userInfo.getUserInfo();
+popupName.value = name;
+popupProfession.value = info;
+popupEditProfileForm.open();
+})
+
+// Открытие попапа увеличения фото 
+const popupWithBigImage = new PopupWithImage (popupImageSelector);
+popupWithBigImage.setEventListeners();
+
+const handleCardClick = (name, link) => {
+  popupWithBigImage.open(name, link);
+}
+
+//валидация
+const validationOfPopupEdit = new FormValidator(config, editPopup);
+validationOfPopupEdit.enableValidation();
+
+const validationOfPopupAdd = new FormValidator(config, addPopup);
+validationOfPopupAdd.enableValidation();
+
+
+const createNewCard = (item) => {
+  const newCard = new Card(item, cardTemplateSelector, handleCardClick)
+  const cardElement = newCard.createCard()
+
+  return cardElement
+}
+
+// // Открытие попапа добавления карточки 
+
+const handleCardAddFormSubmit = (evt, item) => {
+  evt.preventDefault();
+  const card = createNewCard(item);
+  cardElementList.addItem(card);
+}
+
+const popupAddCardForm = new PopupWithForm('#popup_type_add', handleCardAddFormSubmit)
+popupAddCardForm.setEventListeners();
+
+addButton.addEventListener('click', function () { 
+   popupSave.setAttribute('disabled', true)
+  validationOfPopupAdd.toggleButtonState();  
+popupAddCardForm.open();
+}); 
+
+ 
+const cardElementList = new Section({
+  items: initialCards, //вот мы закинули аргументом наш массив 
+  renderer: (item) => { 
+    const card = createNewCard (item);// а вот наша функция, которая отвечает за создание и отрисовку данных на странице
+     cardElementList.addItem(card); // тут мы создали и добавили нашу карточку
+  },
+}, cardList) // передали контейнер, куда хотим добавить карточки
+
+cardElementList.renderItems(); //вызвали второй публичный метод,  который добавит нам карточки в контейнер
+

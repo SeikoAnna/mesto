@@ -5,9 +5,6 @@ constructor (popupSelector, handleFormSubmit) {
 super(popupSelector)
 
 this._handleFormSubmit = handleFormSubmit;
-// this._formElement = 
-// // достаём все элементы полей
-// this._inputList = this._popupSelector.querySelectorAll('.popup__input');
 
 }
 
@@ -16,8 +13,8 @@ _getInputValues() {
   // создаём пустой объект
   this._formValues = {};
   // добавляем в этот объект значения всех полей
-  const inputList = this._popupSelector.querySelectorAll('.popup__input');
-  inputList.forEach(input => {
+  this._inputList = this._popupSelector.querySelectorAll('.popup__input');
+  this._inputList.forEach(input => {
     this._formValues[input.name] = input.value;
   });
   // возвращаем объект значений
@@ -27,6 +24,7 @@ _getInputValues() {
 setEventListeners () {
   super.setEventListeners();
   this._popupSelector.querySelector('.popup__form').addEventListener('submit', (evt) => {
+    evt.preventDefault();
     this._handleFormSubmit(evt, this._getInputValues());
     this.close();
   })

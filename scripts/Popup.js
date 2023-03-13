@@ -20,13 +20,17 @@ export class Popup {
   }
   
   _closePopupByClickOnOverlay = (e) => {
-    if (!e.target.closest('.popup__container')) {
+    if (e.target.classList.contains('popup_opened')) {
       this.close();
     }
   }
   
   setEventListeners() {
-    this._popupSelector.addEventListener('click', this._closePopupByClickOnOverlay)
+    this._popupSelector.addEventListener('click', () => {
+        this._closePopupByClickOnOverlay(window.event)
+  });
+   this._popupSelector.querySelector('.popup__close').addEventListener('click', () => {
+    this.close()
+    })
   }
-
-    }
+}
