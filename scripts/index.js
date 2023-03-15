@@ -111,7 +111,6 @@ validationOfPopupEdit.enableValidation();
 const validationOfPopupAdd = new FormValidator(config, addPopup);
 validationOfPopupAdd.enableValidation();
 
-
 const createNewCard = (item) => {
   const newCard = new Card(item, cardTemplateSelector, handleCardClick)
   const cardElement = newCard.createCard()
@@ -119,12 +118,10 @@ const createNewCard = (item) => {
   return cardElement
 }
 
-// // Открытие попапа добавления карточки 
-
+// Открытие попапа добавления карточки 
 const handleCardAddFormSubmit = (evt, item) => {
   evt.preventDefault();
-  const card = createNewCard(item);
-  cardElementList.addItem(card);
+  cardElementList.addItem(createNewCard(item))
 }
 
 const popupAddCardForm = new PopupWithForm('#popup_type_add', handleCardAddFormSubmit)
@@ -136,14 +133,12 @@ addButton.addEventListener('click', function () {
 popupAddCardForm.open();
 }); 
 
- 
+ //добавление всех карточек
 const cardElementList = new Section({
   items: initialCards, //вот мы закинули аргументом наш массив 
-  renderer: (item) => { 
-    const card = createNewCard (item);// а вот наша функция, которая отвечает за создание и отрисовку данных на странице
-     cardElementList.addItem(card); // тут мы создали и добавили нашу карточку
+  renderer: (item) => { // а вот наша функция, которая отвечает за создание и отрисовку данных на странице
+     cardElementList.addItem(createNewCard(item)); // тут мы создали и добавили нашу карточку
   },
 }, cardList) // передали контейнер, куда хотим добавить карточки
 
 cardElementList.renderItems(); //вызвали второй публичный метод,  который добавит нам карточки в контейнер
-

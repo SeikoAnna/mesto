@@ -1,13 +1,15 @@
 export default class Card {
-  constructor(data, elementCardTemplate, handleCardClick) {
+  constructor({ name, link }, cardTemplateSelector, handleCardClick) {
     this._handleCardClick = handleCardClick;
-    this._data = data;
-    this._elementCardTemplate = elementCardTemplate;
+    this._name = name;
+    this._link = link;
+    this._cardTemplateSelector = cardTemplateSelector;
+    
   }
 
   _getTemplate() {
     const newCard = document
-    .querySelector(this._elementCardTemplate)
+    .querySelector(this._cardTemplateSelector)
     .content
     .querySelector('.element')
     .cloneNode(true);
@@ -30,20 +32,21 @@ export default class Card {
 
     deleteCardBtn.addEventListener('click', this._handleDeleteCard);
     this._likeCardBtn.addEventListener('click', this._handleLikeCard);
-    this._cardLink.addEventListener('click', () => this._handleCardClick(this._data.name, this._data.link));
+    this._cardLink.addEventListener('click', () => this._handleCardClick(this._name, this._link));
   }
 
   createCard() {
     this._newCard = this._getTemplate();
     this._cardName = this._newCard.querySelector('.element__title');
-    this._cardName.textContent = this._data.name;
+    this._cardName.textContent = this._name;
 
     this._cardLink = this._newCard.querySelector('.element__picture');
-    this._cardLink.src = this._data.link;
-    this._cardLink.alt = this._data.name;
+    this._cardLink.src = this._link;
+    this._cardLink.alt = this._name;
 
     this._addEventListeners();
 
     return this._newCard;
+    
   }
 }
