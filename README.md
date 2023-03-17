@@ -35,6 +35,8 @@ Grid
 Массивы
 Функции
 Dom
+ООП
+Webpack
 
 
 Ссылка на проект: https://seikoanna.github.io/mesto/
