@@ -4,6 +4,7 @@
   "description": "Learning platform",
   "main": "babel.config.js",
   "scripts": {
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "build": "webpack --mode production",
     "dev": "webpack serve"

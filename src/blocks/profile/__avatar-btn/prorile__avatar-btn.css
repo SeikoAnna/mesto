@@ -1,0 +1,19 @@
+.prorile__avatar-btn{
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+    background-image: url(../../../images/pen_avatar.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 26px;
+    z-index: 0;
+    padding: 0;
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 100px;
+}
+
+@media screen and (max-width: 750px) {
+    .prorile__avatar-btn{
+        margin-bottom: 26px;
+    }
+}
