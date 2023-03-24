@@ -9,6 +9,90 @@ import { Popup } from "../components/Popup.js";
 import Api from "../components/Api.js";
 import "./index.css";
 
+const editButton = document.querySelector(".profile__edit-button"); //кнопка открытия попапа редаактирования профиля
+const popup = document.querySelector(".popup");
+const popupName = document.querySelector(".popup__input_type_name");
+const popupProfession = document.querySelector(".popup__input_type_profession");
+const popupSave = document.querySelector(".popup__submit-popup-btn"); //кнопка сохранить
+const profName = document.querySelector(".profile__name");
+const profProfession = document.querySelector(".profile__profession");
+const popupForm = document.querySelector(".popup__form");
+const addButton = document.querySelector(".profile__add-button"); //кнопка открытия попапа добавления карточки
+const elemTitle = document.querySelector(".element__title");
+const elemPicture = document.querySelector(".element__picture");
+const popupTitle = document.querySelector(".popup__input_type_title");
+const popupPicture = document.querySelector(".popup__input_type_picture");
+const editPopup = document.querySelector(".popup_type_edit"); //попап редактирования профиля
+const addPopup = document.querySelector(".popup_type_add"); //попап добавления новой карточки
+
+const popupFormEdit = document.querySelector(".popup__form_edit");
+const popupFormAdd = document.querySelector(".popup__form_add");
+const popupImage = document.querySelector(".popup_photo"); //попап увеличенного фото
+const cardLists = document.querySelector(".elements");
+
+const popupCloseButtons = document.querySelectorAll(".popup__close"); //крестик закрытия попапа
+const imageElem = document.querySelector(".element__picture");
+const titleElem = document.querySelector(".element__title");
+const imgPopup = document.querySelector(".popup__image"); //увеличенное фото
+const titlePopup = document.querySelector(".popup__photo-title"); //подпись под увеличенным фото
+
+//селекторы
+const cardList = ".elements";
+const popupImageSelector = "#popup_photo";
+const cardTemplateSelector = "#element__card";
+
+const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-popup-btn",
+  inactiveButtonClass: "popup__submit-popup-btn_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active",
+};
+const popupEditAvatarSelector = '#popup__avatar'
+const editAvatarBtn = document.querySelector('.profile__edit-button')
+const popupEditAvatar = document.querySelector(popupEditAvatarSelector)
+const popupFormEditAvatar = popupEditAvatar.querySelector('#form__avatar')
+
+
+const popupInputLinkAvatar =  popupEditAvatar.querySelector('.popup__input_link')
+const profileSelector = {
+  userNameSelector: '.profile__name',
+  userInfoSelector: '.profile__profession',
+  avatarInfoSelector: '.profile__avatar'
+}
+
+const profileName = document.querySelector(profileSelector.userNameSelector)
+const profileOccupation = document.querySelector(profileSelector.userInfoSelector)
+const profileAvatar = document.querySelector(profileSelector.avatarInfoSelector)
+
+const initialCards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
 /// Получение данных с сервера
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-61',
@@ -178,8 +262,8 @@ validationOfPopupAdd.enableValidation();
 
 
 // Валидация в попапе редактирования аватара
-const avatarEditFormValidator = new FormValidator(config,popupFormEditAvatar);
-avatarEditFormValidator.enableValidation()
+// const avatarEditFormValidator = new FormValidator(config, popupFormEditAvatar);
+// avatarEditFormValidator.enableValidation()
 
 //попап добавления новой карточки
 const popupAddCardForm = new PopupWithForm(
@@ -206,85 +290,4 @@ editButton.addEventListener("click", () => {
   popupEditProfileForm.open();
 });
 
-const editButton = document.querySelector(".profile__edit-button"); //кнопка открытия попапа редаактирования профиля
-const popup = document.querySelector(".popup");
-const popupName = document.querySelector(".popup__input_type_name");
-const popupProfession = document.querySelector(".popup__input_type_profession");
-const popupSave = document.querySelector(".popup__submit-popup-btn"); //кнопка сохранить
-const profName = document.querySelector(".profile__name");
-const profProfession = document.querySelector(".profile__profession");
-const popupForm = document.querySelector(".popup__form");
-const addButton = document.querySelector(".profile__add-button"); //кнопка открытия попапа добавления карточки
-const elemTitle = document.querySelector(".element__title");
-const elemPicture = document.querySelector(".element__picture");
-const popupTitle = document.querySelector(".popup__input_type_title");
-const popupPicture = document.querySelector(".popup__input_type_picture");
-const editPopup = document.querySelector(".popup_type_edit"); //попап редактирования профиля
-const addPopup = document.querySelector(".popup_type_add"); //попап добавления новой карточки
 
-const popupFormEdit = document.querySelector(".popup__form_edit");
-const popupFormAdd = document.querySelector(".popup__form_add");
-const popupImage = document.querySelector(".popup_photo"); //попап увеличенного фото
-const cardLists = document.querySelector(".elements");
-
-const popupCloseButtons = document.querySelectorAll(".popup__close"); //крестик закрытия попапа
-const imageElem = document.querySelector(".element__picture");
-const titleElem = document.querySelector(".element__title");
-const imgPopup = document.querySelector(".popup__image"); //увеличенное фото
-const titlePopup = document.querySelector(".popup__photo-title"); //подпись под увеличенным фото
-
-//селекторы
-const cardList = ".elements";
-const popupImageSelector = "#popup_photo";
-const cardTemplateSelector = "#element__card";
-
-const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-popup-btn",
-  inactiveButtonClass: "popup__submit-popup-btn_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-};
-
-const editAvatarBtn = document.querySelector('.profile__edit-button')
-const popupFormEditAvatar = popupEditAvatar.querySelector('#form__avatar')
-const popupEditAvatar = document.querySelector(popupEditAvatarSelector)
-const popupEditAvatarSelector = '#popup__avatar'
-const popupInputLinkAvatar =  popupEditAvatar.querySelector('.popup__input_link')
-const profileSelector = {
-  userNameSelector: '.profile__name',
-  userInfoSelector: '.profile__occupation',
-  avatarInfoSelector: '.profile__avatar'
-}
-
-const profileName = document.querySelector(profileSelector.userNameSelector)
-const profileOccupation = document.querySelector(profileSelector.userInfoSelector)
-const profileAvatar = document.querySelector(profileSelector.avatarInfoSelector)
-
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
