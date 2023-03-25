@@ -19,5 +19,6 @@ export class UserInfo {
 
   setUserAvatar (data) {
     this._avatarInfo.src = data.avatar
+
   }
 }

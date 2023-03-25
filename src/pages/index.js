@@ -50,7 +50,7 @@ const config = {
   errorClass: "popup__input-error_active",
 };
 const popupEditAvatarSelector = '#popup__avatar'
-const editAvatarBtn = document.querySelector('.profile__edit-button')
+const editAvatarBtn = document.querySelector('.profile__avatar-btn')
 const popupEditAvatar = document.querySelector(popupEditAvatarSelector)
 const popupFormEditAvatar = popupEditAvatar.querySelector('#form__avatar')
 
@@ -124,7 +124,7 @@ const popupWithBigImage = new PopupWithImage(popupImageSelector);
 popupWithBigImage.setEventListeners();
 
 const createNewCard = (item) => {
-  const newCard = new Card(item, cardTemplateSelector, userId, {
+  const newCard = new Card(item, userId, cardTemplateSelector,  {
     handleCardClick: (name, link) => {
       popupWithBigImage.open(name, link);
     },
@@ -157,7 +157,7 @@ const createNewCard = (item) => {
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cardList]) => {
     userInfo.setUserInfo(user.name, user.about)
-    userInfo.setUserAvatar(user.avatar)
+    userInfo.setUserAvatar(user)
     userId = user._id
     // cardList.forEach((item) => {
     //   createNewCard(item, userId)
@@ -176,7 +176,7 @@ const addNewCard = (card) => {
     .then((item) => {
       // createNewCard(item, userId)
       const cardElement = createNewCard(item)
-      cardElementList.prependAddItem(cardElement)
+      cardElementList.addItem(cardElement)
       popupAddCardForm.close()
     })
     .catch((error) => {
@@ -227,18 +227,9 @@ const editAvatarPopup = new PopupWithForm(
 editAvatarPopup.setEventListeners()
 
 //открытие попапа профиля
-const userInfo = new UserInfo({
-  userNameSelector: ".profile__name",
-  userInfoSelector: ".profile__profession",
-});
+const userInfo = new UserInfo(profileSelector);
 
-const popupEditProfileForm = new PopupWithForm(
-  "#popup_type_edit",
-  handleEditProfileFormSubmit
-);
-popupEditProfileForm.setEventListeners();
-
-//редактирование данных пользователя
+// /редактирование данных пользователя
 const handleEditProfileFormSubmit = (item) => {
   popupEditProfileForm.submitBtn('Сохранение...')
   api
@@ -252,6 +243,14 @@ const handleEditProfileFormSubmit = (item) => {
   })
   .finally(popupEditProfileForm.submitBtn('Сохранить'))
 }
+
+const popupEditProfileForm = new PopupWithForm(
+  "#popup_type_edit",
+  handleEditProfileFormSubmit
+);
+popupEditProfileForm.setEventListeners();
+
+
 
 //валидация
 const validationOfPopupEdit = new FormValidator(config, editPopup);
@@ -296,9 +295,9 @@ addButton.addEventListener("click", function () {
 // });
 
 editButton.addEventListener("click", () => {
-    const { name, info } = userInfo.getUserInfo();
-    popupName.value = name;
-    popupProfession.value = info;
+  //   const { name, info } = userInfo.getUserInfo();
+  //   popupName.value = name;
+  //   popupProfession.value = info;
   validationOfPopupEdit.resetValidation();
   popupEditProfileForm.open();
 });
