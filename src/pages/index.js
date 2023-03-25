@@ -277,16 +277,29 @@ editAvatarBtn.addEventListener('click', () => {
   editAvatarPopup.open()
 })
 
+// addButton.addEventListener("click", function () {
+//   popupSave.setAttribute("disabled", true);
+//   validationOfPopupAdd.toggleButtonState();
+//   popupAddCardForm.open();
+// });
+
 addButton.addEventListener("click", function () {
-  popupSave.setAttribute("disabled", true);
-  validationOfPopupAdd.toggleButtonState();
+  validationOfPopupAdd.resetValidation();
   popupAddCardForm.open();
 });
 
+// editButton.addEventListener("click", () => {
+//   const { name, info } = userInfo.getUserInfo();
+//   popupName.value = name;
+//   popupProfession.value = info;
+//   popupEditProfileForm.open();
+// });
+
 editButton.addEventListener("click", () => {
-  const { name, info } = userInfo.getUserInfo();
-  popupName.value = name;
-  popupProfession.value = info;
+    const { name, info } = userInfo.getUserInfo();
+    popupName.value = name;
+    popupProfession.value = info;
+  validationOfPopupEdit.resetValidation();
   popupEditProfileForm.open();
 });
 
