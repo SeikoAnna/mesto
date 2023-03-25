@@ -262,8 +262,8 @@ validationOfPopupAdd.enableValidation();
 
 
 // Валидация в попапе редактирования аватара
-// const avatarEditFormValidator = new FormValidator(config, popupFormEditAvatar);
-// avatarEditFormValidator.enableValidation()
+const avatarEditFormValidator = new FormValidator(config, popupFormEditAvatar);
+avatarEditFormValidator.enableValidation()
 
 //попап добавления новой карточки
 const popupAddCardForm = new PopupWithForm(
