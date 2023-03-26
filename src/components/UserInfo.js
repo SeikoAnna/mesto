@@ -17,8 +17,8 @@ export class UserInfo {
     this._userInfo.textContent = info;
   }
 
-  setUserAvatar (data) {
-    this._avatarInfo.src = data.avatar
+  setUserAvatar (link) {
+    this._avatarInfo.src = link
 
   }
 }

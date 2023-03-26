@@ -129,7 +129,7 @@ const createNewCard = (item) => {
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cardList]) => {
     userInfo.setUserInfo(user.name, user.about);
-    userInfo.setUserAvatar(user);
+    userInfo.setUserAvatar(user.avatar);
     userId = user._id;
     renderInitialCards(cardList);
   })
