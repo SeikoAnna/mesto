@@ -1,4 +1,4 @@
-.prorile__avatar-btn{
+.profile__avatar-btn{
     background-color: rgba(0, 0, 0, 0.8);
     border: none;
     background-image: url(../../../images/pen_avatar.svg);
@@ -10,10 +10,11 @@
     width: 120px;
     height: 120px;
     border-radius: 100px;
+
 }
 
 @media screen and (max-width: 750px) {
-    .prorile__avatar-btn{
+    .profile__avatar-btn{
         margin-bottom: 26px;
     }
 }
