@@ -4,7 +4,7 @@ export default class Api {
       this._headers = headers
     }
   
-    _addResult(res) {
+    _checkResponse(res) {
       if (res.ok) {
         return res.json()
       }
@@ -16,7 +16,7 @@ export default class Api {
       return fetch(`${this._url}/cards`, {
         method: 'GET',
         headers: this._headers,
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   
     // Добавить новую карточку
@@ -28,7 +28,7 @@ export default class Api {
           name: name,
           link: link,
         }),
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   
     // Удалить карточку
@@ -36,7 +36,7 @@ export default class Api {
       return fetch(`${this._url}/cards/${cardId}`, {
         method: 'DELETE',
         headers: this._headers,
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   
     // Лайки
@@ -44,7 +44,7 @@ export default class Api {
       return fetch(`${this._url}/cards/${id}/likes/`, {
         method: 'PUT',
         headers: this._headers,
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   
     // Удалить лайки
@@ -52,7 +52,7 @@ export default class Api {
       return fetch(`${this._url}/cards/${id}/likes/`, {
         method: 'DELETE',
         headers: this._headers,
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   
     // Получeние данных юзера
@@ -60,7 +60,7 @@ export default class Api {
       return fetch(`${this._url}/users/me`, {
         method: 'GET',
         headers: this._headers,
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   
     // Редакт информации юзера
@@ -72,7 +72,7 @@ export default class Api {
           name: name,
           about: info,
         }),
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   
     // Редакт аватара
@@ -83,7 +83,7 @@ export default class Api {
         body: JSON.stringify({
           avatar: url,
         }),
-      }).then((res) => this._addResult(res))
+      }).then((res) => this._checkResponse(res))
     }
   }
   
