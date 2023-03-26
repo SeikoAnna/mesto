@@ -42,5 +42,5 @@
 .element__like_amount{color:#000;font-size:13px;font-weight:400;line-height:1.2;margin:3px 0 0 1px}
 .profile__avatar-btn{background-color:rgba(0,0,0,.8);background-image:url(a086f758840ae814ecde.svg);background-position:50%;background-repeat:no-repeat;background-size:26px;border:none;border-radius:100px;height:120px;padding:0;width:120px;z-index:0}@media screen and (max-width:750px){.profile__avatar-btn{margin-bottom:26px}}
 .popup__title-card-delete{color:#000;font-size:24px;font-style:normal;font-weight:900;height:23px;line-height:29px;margin:0 0 30px;padding:0;width:358px}
-.popup__occupation{margin-bottom:38px}
+.popup__occupation{margin-bottom:8px}
 
